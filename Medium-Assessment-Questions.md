@@ -27,3 +27,11 @@ SELECT  last_name, first_name, address, COALESCE(SUM(nights),0) AS "nights"
 GROUP BY 1,2,3
 ORDER BY 1,2
 ```
+###9.Show the number of people arriving. For each day of the week beginning 2016-11-25 show the number of people who are arriving that day.
+```SQL
+SELECT booking_date, COUNT(*) AS 'arrivals' 
+  FROM booking
+    WHERE booking_date > '2016-11-24'
+      AND booking_date < '2016-12-02'
+GROUP BY 1
+```
