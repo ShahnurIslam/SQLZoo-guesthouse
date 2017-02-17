@@ -13,7 +13,7 @@ SELECT arrival_time, first_name, last_name
   JOIN guest g
     ON b.guest_id = g.id
   WHERE booking_date = '2016-11-05'
-ORDER BY 1 ASC
+ORDER BY 1 ASC -- rather than writing the actual column name, you can order by column number
 ```
 ###3.Look up daily rates. Give the daily rate that should be paid for bookings with ids 5152, 5165, 5154 and 5295. Include booking id, room type, number of occupants and the amount.
 
