@@ -19,7 +19,7 @@ SELECT SUM(nights*amount) AS "TTL Amount payable"
 
 ```SQL
 -- Use a left join to include all guests from the guest table 
-and we use the COALESCE function to change Nulls into 0
+-- and we use the COALESCE function to change Nulls into 0
 SELECT  last_name, first_name, address, COALESCE(SUM(nights),0) AS "nights" 
   FROM guest g
     LEFT JOIN booking b
