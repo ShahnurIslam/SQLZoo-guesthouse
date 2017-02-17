@@ -18,7 +18,8 @@ SELECT SUM(nights*amount) AS "TTL Amount payable"
 ###8.Edinburgh Residents. For every guest who has the word “Edinburgh” in their address show the total number of nights booked. Be sure to include 0 for those guests who have never had a booking. Show last name, first name, address and number of nights. Order by last name then first name.
 
 ```SQL
--- Use a left join to include all guests from the guest table and we use the COALESCE function to change Nulls into 0
+-- Use a left join to include all guests from the guest table 
+and we use the COALESCE function to change Nulls into 0
 SELECT  last_name, first_name, address, COALESCE(SUM(nights),0) AS "nights" 
   FROM guest g
     LEFT JOIN booking b
