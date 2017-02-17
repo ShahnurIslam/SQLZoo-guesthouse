@@ -36,12 +36,13 @@ SELECT booking_date, COUNT(*) AS 'arrivals'
       AND booking_date < '2016-12-02'
 GROUP BY 1
 ```
-###9.How many guests? Show the number of guests in the hotel on the night of 2016-11-21. Include all those who checked in that day or before but not those who have check out on that day or before.
+###10.How many guests? Show the number of guests in the hotel on the night of 2016-11-21. Include all those who checked in that day or before but not those who have check out on that day or before.
 
 
 ```SQL
 SELECT SUM(occupants)
 FROM booking
-WHERE DATE_ADD(booking_date,INTERVAL nights DAY) > '2016-11-21' --creates a field that has the check out date for each guest
-AND booking_date <= '2016-11-21' 
+--creates a field that has the check out date for each guest and we include guests who's check out date is greate than 21st
+  WHERE DATE_ADD(booking_date,INTERVAL nights DAY) > '2016-11-21' 
+  AND booking_date <= '2016-11-21' 
 ```
