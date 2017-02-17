@@ -31,12 +31,14 @@ SELECT first_name, last_name, address
   FROM booking b 
   JOIN guest g 
     ON b.guest_id = g.id
- WHERE room_no =101 AND booking_date = '2016-12-03'
+ WHERE room_no =101 
+  AND booking_date = '2016-12-03'
 ```
 
-
-
-
-
-
+###5.How many bookings, how many nights? For guests 1185 and 1270 show the number of bookings made and the total number nights. Your output should include the guest id and the total number of bookings and the total number of nights.
+```SQL
+SELECT guest_id, COUNT(*) AS "Total Bookings", SUM(nights) AS "Total Nights" -- I find adding aliases makes tables make more sense
+FROM booking
+WHERE guest_id IN(1185,1270)
+GROUP BY 1 
 ```
