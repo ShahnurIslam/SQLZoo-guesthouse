@@ -42,7 +42,8 @@ GROUP BY 1
 ```SQL
 SELECT SUM(occupants)
 FROM booking
---creates a field that has the check out date for each guest and we include guests who's check out date is greate than 21st
+--Wreates a field that has the check out date for each guest
+--We include guests who's check out date is greater than 21st but check in date is the 21st
   WHERE DATE_ADD(booking_date,INTERVAL nights DAY) > '2016-11-21' 
   AND booking_date <= '2016-11-21' 
 ```
