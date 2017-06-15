@@ -1,4 +1,5 @@
 Link to ERM: http://sqlzoo.net/wiki/Guest_House
+
 ###6.Ruth Cadbury. Show the total amount payable by guest Ruth Cadbury for her room bookings. You should JOIN to the rate table using room_type_requested and occupants.
 ```SQL
 SELECT SUM(nights*amount) AS "TTL Amount payable"
@@ -20,13 +21,10 @@ SELECT SUM(nights*amount) AS "TTL Amount payable"
 ```SQL
 -- Use a left join to include all guests from the guest table 
 -- and we use the COALESCE function to change Nulls into 0
-SELECT  last_name, first_name, address, COALESCE(SUM(nights),0) AS "nights" 
-  FROM guest g
-    LEFT JOIN booking b
-    ON g.id = b.guest_id
-  WHERE address LIKE '%Edinburgh%'
-GROUP BY 1,2,3
-ORDER BY 1,2
+SELECT last_name, first_name, address, SUM(COALESCE(nights,0)) AS nights FROM guest
+LEFT JOIN booking ON id = guest_id
+WHERE address LIKE '%Edinburgh%'
+GROUP BY 1 , 2, 3
 ```
 ###9.Show the number of people arriving. For each day of the week beginning 2016-11-25 show the number of people who are arriving that day.
 ```SQL
